@@ -1,26 +1,37 @@
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-
-sf::Texture texture;
-
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+	sf::Texture background;
+	background.loadFromFile ("Background.png");
+	sf::Sprite sprite (background);
+	sprite.setPosition (0, 0);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+	sf::Music music;
+	music.openFromFile("Oda.ogg");
+	// error
+	music.play();
+
+	while (window.isOpen())
+	{	
+		
+		window.clear();
+		sprite.setPosition (0, 0);
+
+		window.draw (sprite);
+
+//	window.draw (otherSprite);	
+
+		if (sf::Keyboard::isKeyPressed (sf::Keyboard::Escape))
+			break;
+
+		window.display();
+
+
+	}
+
 
     return 0;
 }
