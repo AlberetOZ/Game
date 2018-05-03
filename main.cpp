@@ -38,6 +38,15 @@ int main()
 	sf::Sprite sprite_background (background);
 	sprite_background.setPosition (0, 0);
 
+
+	if(rand() %(50) == 1)
+	{
+		assert(background.loadFromFile ("Happy_Background.jpg"));
+
+
+//		sprite_pony_tell.setPosition(400, 420);
+
+	}
 	
 	sf::Texture hero;
 	assert(hero.loadFromFile ("hero.png"));
