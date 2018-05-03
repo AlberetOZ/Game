@@ -5,15 +5,47 @@
 #include <iostream>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+
+int pony_tell_hello()
+{
+
+
+
+
+
+    return 0;
+}
+
+
 int main()
 {
 	
 
+
+
+
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Inventory");
+
+
+	window.setVerticalSyncEnabled (true);
+	window.setFramerateLimit (60);
+
+
+
 	sf::Texture background;
 	assert(background.loadFromFile ("Background.png"));
 	sf::Sprite sprite_background (background);
 	sprite_background.setPosition (0, 0);
+
+	
+	sf::Texture hero;
+	assert(hero.loadFromFile ("hero.png"));
+	sf::Sprite sprite_hero (hero);
+	sprite_hero.setPosition (750, 300);
+
+
+
 	
 	sf::Texture pony_tell;
 	assert(pony_tell.loadFromFile ("pony_tell/pony_tell2.jpg"));
@@ -31,20 +63,39 @@ int main()
 	// set the character size
 	text_pony_tell.setCharacterSize(32); // in pixels, not points!
 
-	text_pony_tell.setColor(sf::Color::Red);
+	text_pony_tell.setColor(sf::Color::Black);
+
+
+
+	sf::Time time = sf::seconds(0.01f);
+	
 
 	sf::Music music;
 	assert(music.openFromFile("Oda.ogg"));
-	// error
 //	music.play();
+
+	system("say 'Hello. Why are you here?'");
 
 	while (window.isOpen())
 	{	
 		
 		window.clear();
-		sprite_background.setPosition (0, 0);
 
+		sprite_background.setPosition (0, 0);
 		window.draw (sprite_background);
+
+//		if()
+//		{
+//			pony_tell_hello();
+//		}
+
+
+		//printf("%d\n", time);
+
+		sprite_hero.setPosition(700, 200);
+		window.draw (sprite_hero);
+
+
 
 		sprite_pony_tell.setPosition(350, 400);
 		window.draw (sprite_pony_tell);
